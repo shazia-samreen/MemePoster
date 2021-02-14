@@ -113,6 +113,11 @@ app.get("/home",function(req,res){
         res.render("home",{posts:result});
     }).sort({_id:-1}).limit(100);
 })
+app.get("/",function(req,res){
+    Meme.find(function(err,result){
+        res.render("home",{posts:result});
+    }).sort({_id:-1}).limit(100);
+})
 app.get("/postameme",function(req,res){
     res.render("postameme");
 })
