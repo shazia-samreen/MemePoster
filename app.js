@@ -120,6 +120,6 @@ app.use(function(req,res){
     res.status(404);
     res.sendFile(__dirname+"/404.html");
 })
-app.listen(8081, function() {
+app.listen(process.env.PORT || 8081, function() {
   console.log("Server started on port 8081");
 });
