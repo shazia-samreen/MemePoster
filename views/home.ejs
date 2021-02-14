@@ -1,0 +1,60 @@
+<%- include("partials/header.ejs") -%>
+    <% posts.forEach(function(post){ %>
+        <% let editid=post._id%>
+        <% let editid1=post._id+'#'%>
+        <% let editid2=post._id+'$'%>
+        <% let patchid="/memes/"+post._id %>
+        <div class="container-fluid container-spacing_2">
+            <div class="row" id=<%= editid1 %>>
+                <div class="col"></div>
+                <div class="col">
+                    <div class="card" ">
+                        <div class=" card-body">
+                            <h5 class="card-title">
+                                <%= post.name %>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                <%= post.caption %>
+                            </h6>
+                            <img src="<%= post.url %>" class="card-img-bottom" alt="image-not-found">
+                            <!-- <form action="/memes/<%= post._id %>"> -->
+                            <button type="submit" class="btn btn-primary edit" id=<%= editid %> onclick=edit(this.id)>Edit</button>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+            <div class="col"></div>
+            </div>
+        <div class="row displayn" id=<%= editid2 %>>
+            <div class="col"></div>
+            <div class="col">
+                <div class="card">
+                    <div class=" card-body">
+                    <form action=" <%= patchid %> "  method="post">
+                        <div class="form-group">
+                            <div class="col-xs-5">
+                                <label for="Name">Meme Owner</label>
+                                <input type="text" class="form-control input-lg" id="Name" name="name"
+                                    placeholder="Enter your full name" value="<%= post.name %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Caption">Caption</label>
+                            <input type="text" class="form-control input-lg" id="Caption" name="caption"
+                                placeholder="Be creative with the caption" value="<%= post.caption %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="url">Meme URL</label>
+                            <input type="url" class="form-control input-lg" id="url" name="url"
+                                placeholder="Enter URL of your meme here" value="<%= post.url %>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+        </div>
+        </div>
+        <% }) %>
+<%- include("partials/footer.ejs") -%>
