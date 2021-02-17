@@ -1,2 +1,2 @@
 npm install
-npm run main
+npm start

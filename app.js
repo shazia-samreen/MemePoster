@@ -10,7 +10,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost:27017/memeDB",{ useFindAndModify: false,useNewUrlParser: true,useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/memeDB",{ useFindAndModify: false,useNewUrlParser: true,useUnifiedTopology: true},function(err){
+    if(!err){
+        console.log("DB connected");
+    }else{
+        console.log(err);
+    }
+});
+// mongodb://localhost:27017/memeDB
 const memeSchema={
     name:String,
     url:String,
@@ -51,8 +58,6 @@ app.route("/home")
     }).sort({_id:-1}).limit(100);
 })
 .post(function(req,res){
-    //req.ContentType = "application/json; charset=utf-8";
-    //console.log(req.body);
     const meme=new Meme({
         name:req.body.name,
         url:req.body.url,
