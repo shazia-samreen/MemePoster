@@ -6,4 +6,4 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongod
 sudo apt install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl enable mongod
-mongo mymemesDB --eval "db.dropDatabase()"
+mongo memeDB --eval "db.dropDatabase()"
