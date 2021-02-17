@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(express.static("public"));
+app.use(express.static(__dirname+"/public"));
 mongoose.connect("mongodb://localhost:27017/memeDB",{ useFindAndModify: false,useNewUrlParser: true,useUnifiedTopology: true},function(err){
     if(!err){
         console.log("DB connected");
@@ -17,7 +17,6 @@ mongoose.connect("mongodb://localhost:27017/memeDB",{ useFindAndModify: false,us
         console.log(err);
     }
 });
-// mongodb://localhost:27017/memeDB
 const memeSchema={
     name:String,
     url:String,
